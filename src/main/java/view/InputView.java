@@ -8,4 +8,8 @@ public class InputView {
     public InputView(Scanner scanner) {
         this.scanner = scanner;
     }
+
+    public String participantName() {
+        return scanner.nextLine();
+    }
 }
