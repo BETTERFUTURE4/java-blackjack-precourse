@@ -1,3 +1,5 @@
+import user.Player;
+import user.Players;
 import util.StringDivider;
 import view.InputView;
 import view.OutputView;
@@ -11,6 +13,11 @@ public class GameManager {
 
     private static void settingParticipant(InputView inputView) {
         List<String> names = getParticipantNames(inputView);
+        Players players = new Players();
+        for (String name : names) {
+            Player player = new Player(name);
+            players.addPlayer(player);
+        }
     }
 
     private static List<String> getParticipantNames(InputView inputView) {
