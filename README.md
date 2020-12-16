@@ -65,3 +65,6 @@ jason: -20000
   - **최대한 1을 유지하기 위해 노력하고, 정말 힘든 경우 2까지 허용**한다.
   - 예를 들어 while문 안에 if문이 있으면 들여쓰기는 2이다.
 - **함수(또는 메소드)의 인자 수를 3개까지만 허용**한다. 4개 이상은 허용하지 않는다.
+
+### 요구사항 출처
+https://velog.io/@kouz/%EC%9A%B0%EC%95%84%ED%95%9C-%ED%85%8C%ED%81%AC%EC%BD%94%EC%8A%A4-2%EA%B8%B0-%ED%94%84%EB%A6%AC%EC%BD%94%EC%8A%A4-3%EC%A3%BC%EC%B0%A8-%EB%AF%B8%EC%85%98-%EB%B8%94%EB%9E%99%EC%9E%AD-%ED%9A%8C%EA%B3%A0-d9k4leywgc
