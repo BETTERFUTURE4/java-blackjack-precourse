@@ -25,4 +25,8 @@ public class Player extends User{
             throw new IllegalArgumentException(IS_EMPTY_NAME);
         }
     }
+
+    public boolean isSameName(String name) {
+        return this.name.equals(name);
+    }
 }

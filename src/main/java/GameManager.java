@@ -15,8 +15,7 @@ public class GameManager {
         List<String> names = getParticipantNames(inputView);
         Players players = new Players();
         for (String name : names) {
-            Player player = new Player(name);
-            players.addPlayer(player);
+            players.addPlayer(name);
         }
     }
 
