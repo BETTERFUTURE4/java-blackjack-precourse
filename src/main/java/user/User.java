@@ -5,7 +5,7 @@ import card.Card;
 import java.util.ArrayList;
 import java.util.List;
 
-public class User {
+public abstract class User {
     private static final int BLACK_JACK = 21;
     private static final String COMMA = ", ";
 
@@ -16,6 +16,8 @@ public class User {
         cards.add(card);
         score += card.score();
     }
+
+    public abstract boolean canDraw();
 
     public List<Card> getCards() {
         return cards;

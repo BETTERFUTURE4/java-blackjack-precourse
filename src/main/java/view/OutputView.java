@@ -15,6 +15,7 @@ public class OutputView {
     private static final String COLON = ": ";
     private static final String DISTRIBUTE_TWO_CARDS = "에게 2장을 나누었습니다.";
     private static final String ASK_DRAW_CARD = "는 한 장의 카드를 더 받겠습니까?(예는 y, 아니오는 n)";
+    private static final String DEALER_DRAW_ONE_CARD = "딜러는 16이하라 한 장의 카드를 더 받았습니다.";
 
     public static void askParticipantName() {
         System.out.println(ASK_PARTICIPANT_NAME);
@@ -43,5 +44,9 @@ public class OutputView {
 
     public static void askDrawCard(Player player) {
         System.out.println(player.getName() + ASK_DRAW_CARD);
+    }
+
+    public static void noticeDealerDrawCard() {
+        System.out.println(DEALER_DRAW_ONE_CARD);
     }
 }

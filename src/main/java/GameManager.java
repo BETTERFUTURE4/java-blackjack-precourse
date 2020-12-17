@@ -24,6 +24,7 @@ public class GameManager {
 
         distributeInitialCard(dealer, players, deck);
         askPlayersDrawCard(players, deck, inputView);
+        checkDealerCard(dealer, deck);
     }
 
     private static void distributeInitialCard(Dealer dealer, List<Player> players, Deck deck) {
@@ -47,8 +48,19 @@ public class GameManager {
     }
 
     private static boolean willDrawCard(Player player, InputView inputView) {
+        return player.canDraw() && askToPlayer(player, inputView);
+    }
+
+    private static boolean askToPlayer(Player player, InputView inputView) {
         OutputView.askDrawCard(player);
         String answer = inputView.willDraw();
-        return answer.equals(YES) && player.canDraw();
+        return answer.equals(YES);
+    }
+
+    private static void checkDealerCard(Dealer dealer, Deck deck) {
+        while (dealer.canDraw()) {
+            dealer.addCard(deck.draw());
+            OutputView.noticeDealerDrawCard();
+        }
     }
 }

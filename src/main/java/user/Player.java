@@ -38,6 +38,7 @@ public class Player extends User{
         this.bettingMoney = bettingMoney.addMoney(money);
     }
 
+    @Override
     public boolean canDraw() {
         return getScore() < BLACK_JACK;
     }
