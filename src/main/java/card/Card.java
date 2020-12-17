@@ -23,6 +23,10 @@ public class Card {
         return symbol.getScore();
     }
 
+    public boolean isAce() {
+        return symbol == Symbol.ACE;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

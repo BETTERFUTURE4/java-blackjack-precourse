@@ -36,8 +36,12 @@ public class CardController {
 
         OutputView.distributeTwoCards(allPlayerName);
         OutputView.printDealerCards(dealer);
+        OutputView.printOneCard(dealer);
+        OutputView.blankLine();
         for (Player player : players) {
             OutputView.printPlayerCards(player);
+            OutputView.printAllCards(player);
+            OutputView.blankLine();
         }
     }
 }

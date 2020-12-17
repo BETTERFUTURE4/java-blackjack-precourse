@@ -2,6 +2,7 @@ package view;
 
 import user.Dealer;
 import user.Player;
+import user.User;
 
 import java.util.List;
 
@@ -13,6 +14,7 @@ public class OutputView {
     private static final String AND = "와 ";
     private static final String COMMA = ", ";
     private static final String COLON = ": ";
+    private static final String SCORE_RESULT = " - 결과: ";
     private static final String DISTRIBUTE_TWO_CARDS = "에게 2장을 나누었습니다.";
     private static final String ASK_DRAW_CARD = "는 한 장의 카드를 더 받겠습니까?(예는 y, 아니오는 n)";
     private static final String DEALER_DRAW_ONE_CARD = "딜러는 16이하라 한 장의 카드를 더 받았습니다.";
@@ -34,12 +36,18 @@ public class OutputView {
 
     public static void printDealerCards(Dealer dealer) {
         System.out.print(DEALER + COLON);
-        System.out.println(dealer.getFirstCard());
     }
 
     public static void printPlayerCards(Player player) {
         System.out.print(player.getName() + CARD + COLON);
-        System.out.println(player.getAllCard());
+    }
+
+    public static void printOneCard(Dealer dealer) {
+        System.out.print(dealer.getFirstCard());
+    }
+
+    public static void printAllCards(User user) {
+        System.out.print(user.getAllCard());
     }
 
     public static void askDrawCard(Player player) {
@@ -48,5 +56,13 @@ public class OutputView {
 
     public static void noticeDealerDrawCard() {
         System.out.println(DEALER_DRAW_ONE_CARD);
+    }
+
+    public static void blankLine() {
+        System.out.println();
+    }
+
+    public static void printScore(int finalScore) {
+        System.out.println(SCORE_RESULT + finalScore);
     }
 }

@@ -25,6 +25,8 @@ public class GameManager {
         distributeInitialCard(dealer, players, deck);
         askPlayersDrawCard(players, deck, inputView);
         checkDealerCard(dealer, deck);
+
+        showResult(dealer, players);
     }
 
     private static void distributeInitialCard(Dealer dealer, List<Player> players, Deck deck) {
@@ -44,6 +46,8 @@ public class GameManager {
         while(willDrawCard(player, inputView)) {
             player.addCard(deck.draw());
             OutputView.printPlayerCards(player);
+            OutputView.printAllCards(player);
+            OutputView.blankLine();
         }
     }
 
@@ -62,5 +66,28 @@ public class GameManager {
             dealer.addCard(deck.draw());
             OutputView.noticeDealerDrawCard();
         }
+    }
+
+    private static void showResult(Dealer dealer, List<Player> players) {
+        showDealerCards(dealer);
+        showPlayersCards(players);
+    }
+
+    private static void showDealerCards(Dealer dealer) {
+        OutputView.printDealerCards(dealer);
+        OutputView.printAllCards(dealer);
+        OutputView.printScore(dealer.getFinalScore());
+    }
+
+    private static void showPlayersCards(List<Player> players) {
+        for (Player player : players) {
+            showPlayerCard(player);
+        }
+    }
+
+    private static void showPlayerCard(Player player) {
+        OutputView.printPlayerCards(player);
+        OutputView.printAllCards(player);
+        OutputView.printScore(player.getFinalScore());
     }
 }
