@@ -1,5 +1,7 @@
+import card.CardController;
 import card.CardFactory;
 import card.Deck;
+import user.Dealer;
 import user.Player;
 import user.PlayerController;
 import view.InputView;
@@ -14,6 +16,12 @@ public class GameManager {
         Deck deck = new Deck(CardFactory.create());
         deck.shuffle();
 
+        Dealer dealer = new Dealer();
         List<Player> players = playerController.getAllPlayer();
+
+        CardController cardController = new CardController();
+        cardController.distributeTwoCardToDealer(dealer, deck);
+        cardController.distributeTwoCardToPlayer(players, deck);
+        cardController.completeDrawTwoCards(dealer, players);
     }
 }
