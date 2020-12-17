@@ -2,6 +2,8 @@ package user;
 
 import money.BettingMoney;
 
+import java.util.List;
+
 public class UserService {
 
     public UserService() {
@@ -13,5 +15,9 @@ public class UserService {
 
     public void registerPlayer(Player player) {
         PlayerRepository.addPlayer(player);
+    }
+
+    public List<Player> getAllPlayers() {
+        return PlayerRepository.allPlayers();
     }
 }

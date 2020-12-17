@@ -36,4 +36,8 @@ public class PlayerController {
         String money = inputView.bettingMoney();
         return new BettingMoney(money);
     }
+
+    public List<Player> getAllPlayer() {
+        return userService.getAllPlayers();
+    }
 }
