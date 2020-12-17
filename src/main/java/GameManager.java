@@ -19,6 +19,10 @@ public class GameManager {
         Dealer dealer = new Dealer();
         List<Player> players = playerController.getAllPlayer();
 
+        distributeInitialCard(dealer, players, deck);
+    }
+
+    private static void distributeInitialCard(Dealer dealer, List<Player> players, Deck deck) {
         CardController cardController = new CardController();
         cardController.distributeTwoCardToDealer(dealer, deck);
         cardController.distributeTwoCardToPlayer(players, deck);
