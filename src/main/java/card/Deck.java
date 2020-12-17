@@ -1,11 +1,11 @@
 package card;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Stack;
 
 public class Deck {
-    private List<Card> cards = new ArrayList<>();
+    private Stack<Card> cards = new Stack<>();
 
     public Deck(List<Card> cards) {
         this.cards.addAll(cards);
