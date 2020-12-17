@@ -4,6 +4,7 @@ import user.Dealer;
 import user.Player;
 import user.User;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 public class OutputView {
@@ -18,6 +19,7 @@ public class OutputView {
     private static final String DISTRIBUTE_TWO_CARDS = "에게 2장을 나누었습니다.";
     private static final String ASK_DRAW_CARD = "는 한 장의 카드를 더 받겠습니까?(예는 y, 아니오는 n)";
     private static final String DEALER_DRAW_ONE_CARD = "딜러는 16이하라 한 장의 카드를 더 받았습니다.";
+    private static final String FINAL_PROFIT_TITLE = "## 최종 수익";
 
     public static void askParticipantName() {
         System.out.println(ASK_PARTICIPANT_NAME);
@@ -64,5 +66,19 @@ public class OutputView {
 
     public static void printScore(int finalScore) {
         System.out.println(SCORE_RESULT + finalScore);
+    }
+
+    public static void printFinalProfitTitle() {
+        System.out.println(FINAL_PROFIT_TITLE);
+    }
+
+    public static void showDealerProfit(BigDecimal profit) {
+        System.out.print(DEALER + COLON);
+        System.out.println(profit);
+    }
+
+    public static void showPlayerProfit(String name, BigDecimal profit) {
+        System.out.print(name + COLON);
+        System.out.println(profit);
     }
 }

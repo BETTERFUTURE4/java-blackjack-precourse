@@ -1,6 +1,9 @@
 package user;
 
 import card.Card;
+import money.BettingMoney;
+
+import java.math.BigDecimal;
 
 /**
  * 게임 딜러를 의미하는 객체
@@ -19,5 +22,12 @@ public class Dealer extends User{
     @Override
     public boolean canDraw() {
         return getScore() <= DRAW_BASE_POINT;
+    }
+
+    public void addProfit(String i, BigDecimal playerProfitRate, BettingMoney money) {
+        BigDecimal temp = new BigDecimal(i);
+        BigDecimal profitRate = playerProfitRate.multiply(temp);
+        BigDecimal bettingMoney = money.getBettingMoney();
+        updateProfit(bettingMoney.multiply(profitRate));
     }
 }

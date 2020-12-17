@@ -1,12 +1,14 @@
 import card.CardController;
 import card.CardFactory;
 import card.Deck;
+import result.ResultCase;
 import user.Dealer;
 import user.Player;
 import user.PlayerController;
 import view.InputView;
 import view.OutputView;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 public class GameManager {
@@ -27,6 +29,8 @@ public class GameManager {
         checkDealerCard(dealer, deck);
 
         showResult(dealer, players);
+        calculateProfit(dealer, players);
+        printFinalProfit(dealer, players);
     }
 
     private static void distributeInitialCard(Dealer dealer, List<Player> players, Deck deck) {
@@ -90,4 +94,27 @@ public class GameManager {
         OutputView.printAllCards(player);
         OutputView.printScore(player.getFinalScore());
     }
+
+    private static void calculateProfit(Dealer dealer, List<Player> players) {
+        for (Player player : players) {
+            calculateEachPlayerResult(player, dealer);
+        }
+    }
+
+    private static void calculateEachPlayerResult(Player player, Dealer dealer) {
+        ResultCase result = ResultCase.getResult(player, dealer);
+        String rate = result.getCaseRate();
+        BigDecimal playerProfitRate = new BigDecimal(rate);
+        player.addProfit("1", playerProfitRate);
+        dealer.addProfit("-1", playerProfitRate, player.getBettingMoney());
+    }
+
+    private static void printFinalProfit(Dealer dealer, List<Player> players) {
+        OutputView.printFinalProfitTitle();
+        OutputView.showDealerProfit(dealer.getProfit());
+        for (Player player : players) {
+            OutputView.showPlayerProfit(player.getName(), player.getProfit());
+        }
+    }
+
 }

@@ -25,6 +25,10 @@ public class Player extends User{
         return name;
     }
 
+    public BettingMoney getBettingMoney() {
+        return bettingMoney;
+    }
+
     private void validateName(String name) {
         if (name.isEmpty()) {
             throw new IllegalArgumentException(IS_EMPTY_NAME);
@@ -41,5 +45,12 @@ public class Player extends User{
     @Override
     public boolean canDraw() {
         return getScore() < BLACK_JACK;
+    }
+
+    public void addProfit(String i, BigDecimal playerProfitRate) {
+        BigDecimal temp = new BigDecimal(i);
+        BigDecimal profitRate = playerProfitRate.multiply(temp);
+        BigDecimal bettingMoney = this.bettingMoney.getBettingMoney();
+        updateProfit(bettingMoney.multiply(profitRate));
     }
 }
