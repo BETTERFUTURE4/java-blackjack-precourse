@@ -1,6 +1,5 @@
 package view;
 
-import java.math.BigDecimal;
 import java.util.Scanner;
 
 public class InputView {
@@ -14,7 +13,7 @@ public class InputView {
         return scanner.nextLine();
     }
 
-    public BigDecimal bettingMoney() {
-        return scanner.nextBigDecimal();
+    public String bettingMoney() {
+        return scanner.nextLine();
     }
 }

@@ -33,7 +33,7 @@ public class PlayerController {
 
     private BettingMoney getBettingMoney(String name, InputView inputView) {
         OutputView.askBettingMoney(name);
-        BigDecimal money = inputView.bettingMoney();
+        String money = inputView.bettingMoney();
         return new BettingMoney(money);
     }
 }
