@@ -14,6 +14,7 @@ public class OutputView {
     private static final String COMMA = ", ";
     private static final String COLON = ": ";
     private static final String DISTRIBUTE_TWO_CARDS = "에게 2장을 나누었습니다.";
+    private static final String ASK_DRAW_CARD = "는 한 장의 카드를 더 받겠습니까?(예는 y, 아니오는 n)";
 
     public static void askParticipantName() {
         System.out.println(ASK_PARTICIPANT_NAME);
@@ -38,5 +39,9 @@ public class OutputView {
     public static void printPlayerCards(Player player) {
         System.out.print(player.getName() + CARD + COLON);
         System.out.println(player.getAllCard());
+    }
+
+    public static void askDrawCard(Player player) {
+        System.out.println(player.getName() + ASK_DRAW_CARD);
     }
 }
