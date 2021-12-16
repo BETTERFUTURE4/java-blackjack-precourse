@@ -1,7 +1,8 @@
 package controller;
 
 import controller.view.InputController;
-import domain.Users;
+import domain.User;
+import domain.repository.Repository;
 
 public class BlackjackController {
 	public BlackjackController() {
@@ -9,9 +10,9 @@ public class BlackjackController {
 		start();
 	}
 	private void initiate() {
-		Users users = InputController.getUsers();
-		users.get().forEach(user -> user.money = InputController.getUserMoney(user.name));
-		System.out.println(users);
+		Repository.users = InputController.getUsers();
+		Repository.users.get().forEach(user -> user.money = InputController.getUserMoney(user.name));
+		System.out.println(Repository.users);
 
 		// 카드받는 여부 확인하는 함수
 		// users.get().forEach(user -> System.out.println(InputController.getAnswer(user.name)));
@@ -20,5 +21,9 @@ public class BlackjackController {
 
 	private void start() {
 		// 작동 시작
+		Repository.DEALER.initCardAppend();
+		Repository.users.get().forEach(User::initCardAppend);
+		System.out.println(Repository.DEALER.getCardStatus());
+		Repository.users.get().forEach(user -> System.out.println(user.getCardStatus()));
 	}
 }

@@ -6,7 +6,7 @@ import utils.Converter;
 import utils.validator.NamesValidator;
 
 public class Cards {
-	private ArrayList<Card> cards = new ArrayList<>();
+	private final ArrayList<Card> cards = new ArrayList<>();
 
 	public void cardAppend(Card card) {
 		cards.add(card);
@@ -22,6 +22,6 @@ public class Cards {
 	@Override
 	public String toString() {
 		// 프린트 원하는 방식으로 구현
-		return cards.toString();
+		return cards.toString().substring(1,cards.toString().length()-1);
 	}
 }

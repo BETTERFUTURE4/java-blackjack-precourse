@@ -15,8 +15,6 @@ public class Users {
 		this.users = Converter.getUsers(users);
 	}
 
-
-
 	public ArrayList<User> get() {
 		return users;
 	}

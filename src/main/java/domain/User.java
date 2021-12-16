@@ -5,11 +5,16 @@ import utils.validator.NameValidator;
 public class User {
 	public final String name;
 	public Money money;
-	public Cards cards;
+	public final Cards cards = new Cards();
 
 	public User(String name) {
 		new NameValidator(name);
 		this.name = name;
+	}
+
+	public void initCardAppend() {
+		cards.cardAppend(new Card());
+		cards.cardAppend(new Card());
 	}
 
 	public boolean equals(User obj) {
@@ -20,5 +25,9 @@ public class User {
 	@Override
 	public String toString() {
 		return name + ": " + money;
+	}
+
+	public String getCardStatus() {
+		return name + " 카드: " + cards;
 	}
 }

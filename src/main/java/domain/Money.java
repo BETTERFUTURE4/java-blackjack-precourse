@@ -6,6 +6,10 @@ import utils.validator.MoneyValidator;
 public class Money {
 	private int money;
 
+	public Money(int money) {
+		this.money = money;
+	}
+
 	public Money(String moneyString) {
 		new MoneyValidator(moneyString);
 		this.money = Converter.getInt(moneyString);
