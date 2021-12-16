@@ -2,6 +2,7 @@ package controller.view;
 
 import domain.Money;
 import domain.Users;
+import utils.validator.AnswerValidator;
 import view.InputView;
 import view.OutputView;
 
@@ -22,6 +23,17 @@ public class InputController {
 		} catch (IllegalArgumentException e) {
 			OutputView.printError(e.getMessage());
 			return getUserMoney(userName);
+		}
+	}
+
+	public static String getAnswer(String userName) {
+		try {
+			String answer = InputView.inputAskCard(userName);
+			new AnswerValidator(answer);
+			return answer;
+		} catch (IllegalArgumentException e) {
+			OutputView.printError(e.getMessage());
+			return getAnswer(userName);
 		}
 	}
 }
