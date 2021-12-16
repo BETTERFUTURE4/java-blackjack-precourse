@@ -2,6 +2,8 @@ package view;
 
 import java.util.ArrayList;
 
+import domain.repository.Repository;
+
 public class OutputView {
 	public static final String OUTPUT_EX = "문자 : %s";
 
@@ -11,7 +13,16 @@ public class OutputView {
 
 	public static void printF(ArrayList<String> arrayList) {
 		arrayList.forEach(array -> System.out.printf(OUTPUT_EX, array));
-		System.out.printf(OUTPUT_EX, arrayList.toString());
+		System.out.printf(OUTPUT_EX, arrayList);
+	}
+
+	public static void printDealerCards() {
+		System.out.println(Repository.DEALER.getCardStatus());
+	}
+
+	public static void printUsersCards() {
+		Repository.users.get().forEach(user -> System.out.println(user.getCardStatus()));
+
 	}
 
 	public static void printBreak() {

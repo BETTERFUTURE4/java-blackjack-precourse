@@ -3,6 +3,7 @@ package controller;
 import controller.view.InputController;
 import domain.User;
 import domain.repository.Repository;
+import view.OutputView;
 
 public class BlackjackController {
 	public BlackjackController() {
@@ -23,7 +24,11 @@ public class BlackjackController {
 		// 작동 시작
 		Repository.DEALER.initCardAppend();
 		Repository.users.get().forEach(User::initCardAppend);
-		System.out.println(Repository.DEALER.getCardStatus());
-		Repository.users.get().forEach(user -> System.out.println(user.getCardStatus()));
+		goRound();
+	}
+
+	private void goRound() {
+		OutputView.printDealerCards();
+		OutputView.printUsersCards();
 	}
 }
