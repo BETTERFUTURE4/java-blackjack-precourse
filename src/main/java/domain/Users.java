@@ -8,6 +8,10 @@ import utils.validator.NamesValidator;
 public class Users {
 	private final ArrayList<User> users;
 
+	public Users(ArrayList<User> users) {
+		this.users = users;
+	}
+
 	public Users(String users) {
 		new NamesValidator(users);
 		this.users = Converter.getUsers(users);
@@ -24,6 +28,8 @@ public class Users {
 	@Override
 	public String toString() {
 		// 프린트 원하는 방식으로 구현
-		return users.toString();
+		StringBuilder stringBuilder = new StringBuilder();
+		users.forEach(user -> stringBuilder.append(", " + user.name));
+		return stringBuilder.toString();
 	}
 }

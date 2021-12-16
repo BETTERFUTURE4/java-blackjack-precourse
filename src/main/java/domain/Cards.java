@@ -11,9 +11,6 @@ public class Cards {
 	public void cardAppend(Card card) {
 		cards.add(card);
 	}
-	public ArrayList<Card> get() {
-		return cards;
-	}
 
 	public int getCardSum() {
 		int sum = 0;
@@ -40,8 +37,8 @@ public class Cards {
 		return sum < 11;
 	}
 
-	public boolean isEmpty() {
-		return cards.isEmpty();
+	public boolean isTwoCard() {
+		return cards.size() == 2;
 	}
 
 	@Override

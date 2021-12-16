@@ -21,9 +21,20 @@ public class User {
 		cards.cardAppend(new Card());
 	}
 
-	public boolean equals(User obj) {
-		// 모델값 같은지 확인
-		return this.name.equals(obj.name);
+	public void setWin() {
+		this.money = new Money(this.money.get());
+	}
+
+	public void setBlackjackWin() {
+		this.money = new Money((int)(this.money.get() * 1.5));
+	}
+
+	public void setLose() {
+		this.money = new Money(this.money.get() * (-1));
+	}
+
+	public void setDraw() {
+		this.money = new Money(0);
 	}
 
 	@Override

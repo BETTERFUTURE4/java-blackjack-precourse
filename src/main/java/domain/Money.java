@@ -4,7 +4,7 @@ import utils.Converter;
 import utils.validator.MoneyValidator;
 
 public class Money {
-	private int money;
+	private final int money;
 
 	public Money(int money) {
 		this.money = money;
@@ -17,15 +17,6 @@ public class Money {
 
 	public int get() {
 		return money;
-	}
-
-	public boolean isEmpty() {
-		return money == 0;
-	}
-
-	public boolean equals(Money obj) {
-		// 모델값 같은지 확인
-		return this.money == obj.get();
 	}
 
 	@Override

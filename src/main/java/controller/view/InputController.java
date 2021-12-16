@@ -19,7 +19,9 @@ public class InputController {
 
 	public static Money getUserMoney(String userName) {
 		try {
-			return new Money(InputView.inputUserMoney(userName));
+			Money money = new Money(InputView.inputUserMoney(userName));
+			OutputView.printBreak();
+			return money;
 		} catch (IllegalArgumentException e) {
 			OutputView.printError(e.getMessage());
 			return getUserMoney(userName);
@@ -30,6 +32,7 @@ public class InputController {
 		try {
 			String answer = InputView.inputAskCard(userName);
 			new AnswerValidator(answer);
+			OutputView.printBreak();
 			return answer;
 		} catch (IllegalArgumentException e) {
 			OutputView.printError(e.getMessage());
