@@ -5,6 +5,7 @@ import utils.validator.NameValidator;
 public class User {
 	public final String name;
 	public Money money;
+	public Cards cards;
 
 	public User(String name) {
 		new NameValidator(name);
@@ -18,7 +19,6 @@ public class User {
 
 	@Override
 	public String toString() {
-		// 프린트 원하는 방식으로 구현
 		return name + ": " + money;
 	}
 }

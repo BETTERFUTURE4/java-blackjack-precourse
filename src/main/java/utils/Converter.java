@@ -9,6 +9,9 @@ public class Converter {
 	public static int getInt(String moneyString) {
 		return Integer.parseInt(moneyString);
 	}
+	public static String getString(int num) {
+		return Integer.toString(num);
+	}
 
 	public static ArrayList<String> getNameSplit(String usersString) {
 		return new ArrayList<>(Arrays.asList(usersString.split(Constants.SEPARATOR)));
