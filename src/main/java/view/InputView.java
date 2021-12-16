@@ -1,32 +1,14 @@
 package view;
 
-import java.util.Scanner;
+//인풋 방식 설명 따라 변경하기
+//import camp.nextstep.edu.missionutils.Console;
 
 public class InputView {
-    private static final String WRONG_ANSWER = "y";
-    private static final String YES = "y";
-    private static final String NO = "n";
+	public static final String INPUT_EX = "인풋설명";
 
-    private Scanner scanner;
-
-    public InputView(Scanner scanner) {
-        this.scanner = scanner;
-    }
-
-    public String participantName() {
-        return scanner.nextLine();
-    }
-
-    public String bettingMoney() {
-        return scanner.nextLine();
-    }
-
-    public String willDraw() {
-        String answer = scanner.nextLine();
-
-        if (!answer.equals(YES) && !answer.equals(NO)) {
-            throw new IllegalArgumentException(WRONG_ANSWER);
-        }
-        return answer;
-    }
+	public static String templateInput() {
+		System.out.println(INPUT_EX);
+		// return Console.readLine();
+		return null;
+	}
 }
