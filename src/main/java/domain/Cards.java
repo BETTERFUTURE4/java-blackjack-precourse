@@ -15,6 +15,31 @@ public class Cards {
 		return cards;
 	}
 
+	public int getCardSum() {
+		int sum = 0;
+		for (Card card : cards) {
+			sum += card.getNumber();
+		}
+
+		if (isInAce() && isGoodToChangeAce(sum)) {
+			sum += 10;
+		}
+		return sum;
+	}
+
+	public boolean isInAce() {
+		for (Card card : cards) {
+			if (card.number.equals("A")) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	public boolean isGoodToChangeAce(int sum) {
+		return sum < 11;
+	}
+
 	public boolean isEmpty() {
 		return cards.isEmpty();
 	}

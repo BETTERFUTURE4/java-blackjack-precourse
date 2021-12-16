@@ -1,9 +1,7 @@
 package domain;
 
 import java.util.ArrayList;
-import java.util.List;
 
-import controller.view.InputController;
 import utils.Converter;
 import utils.validator.NamesValidator;
 

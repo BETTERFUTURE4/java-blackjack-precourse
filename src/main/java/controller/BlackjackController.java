@@ -30,5 +30,23 @@ public class BlackjackController {
 	private void goRound() {
 		OutputView.printDealerCards();
 		OutputView.printUsersCards();
+		for (User user : Repository.users.get()) {
+			userGoRound(user, 0);
+		}
+	}
+
+	private void userGoRound(User user, int repeatNum) {
+		if (user.cards.getCardSum() < 21) {
+			String answer = InputController.getAnswer(user.name);
+			if (answer.equals("y")) {
+				user.cardAppend();
+				OutputView.printUserCards(user);
+				userGoRound(user, repeatNum + 1);
+				return;
+			}
+			if (repeatNum == 0) {
+				OutputView.printUserCards(user);
+			}
+		}
 	}
 }

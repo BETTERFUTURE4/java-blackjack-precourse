@@ -2,6 +2,7 @@ package view;
 
 import java.util.ArrayList;
 
+import domain.User;
 import domain.repository.Repository;
 
 public class OutputView {
@@ -22,7 +23,10 @@ public class OutputView {
 
 	public static void printUsersCards() {
 		Repository.users.get().forEach(user -> System.out.println(user.getCardStatus()));
+	}
 
+	public static void printUserCards(User user) {
+		System.out.println(user.getCardStatus());
 	}
 
 	public static void printBreak() {

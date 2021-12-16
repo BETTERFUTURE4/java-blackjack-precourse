@@ -17,6 +17,10 @@ public class User {
 		cards.cardAppend(new Card());
 	}
 
+	public void cardAppend() {
+		cards.cardAppend(new Card());
+	}
+
 	public boolean equals(User obj) {
 		// 모델값 같은지 확인
 		return this.name.equals(obj.name);

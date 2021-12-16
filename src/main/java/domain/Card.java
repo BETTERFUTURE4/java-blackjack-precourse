@@ -18,6 +18,10 @@ public class Card {
 		this.pattern = Util.getRandomCardPattern();
 	}
 
+	public int getNumber() {
+		return number.getNumber();
+	}
+
 	public boolean equals(Card obj) {
 		// 모델값 같은지 확인
 		return number.equals(obj.number) && pattern.equals(obj.pattern);
