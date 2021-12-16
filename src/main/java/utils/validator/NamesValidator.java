@@ -27,7 +27,7 @@ public class NamesValidator {
 	private void isDuplicated() {
 		List<String> nameList = Converter.getNameSplit(names);
 		if (nameList.size() != nameList.stream().distinct().count()) {
-			throw new IllegalArgumentException(Constants.ERROR_NAMES_PATTERN);
+			throw new IllegalArgumentException(Constants.ERROR_NAMES_DUPLICATED_PATTERN);
 		}
 	}
 }

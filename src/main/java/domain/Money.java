@@ -1,13 +1,14 @@
 package domain;
 
+import utils.Converter;
 import utils.validator.MoneyValidator;
 
 public class Money {
 	private int money;
 
-	public Money(String money) {
-		new MoneyValidator(money);
-		// 컨버터 이용해 값 적절하게 변경
+	public Money(String moneyString) {
+		new MoneyValidator(moneyString);
+		this.money = Converter.getInt(moneyString);
 	}
 
 	public int get() {

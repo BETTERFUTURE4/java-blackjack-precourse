@@ -1,19 +1,23 @@
 package domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import controller.view.InputController;
 import utils.Converter;
 import utils.validator.NamesValidator;
 
 public class Users {
-	private final List<User> users;
+	private final ArrayList<User> users;
 
 	public Users(String users) {
 		new NamesValidator(users);
 		this.users = Converter.getUsers(users);
 	}
 
-	public List<User> get() {
+
+
+	public ArrayList<User> get() {
 		return users;
 	}
 

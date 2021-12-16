@@ -9,7 +9,8 @@ public class BlackjackController {
 		start();
 	}
 	private void initiate() {
-		Users users = InputController.getNames();
+		Users users = InputController.getUsers();
+		users.get().forEach(user -> user.money = InputController.getUserMoney(user.name));
 		System.out.println(users);
 	}
 
