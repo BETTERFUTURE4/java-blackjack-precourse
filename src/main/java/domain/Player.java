@@ -2,12 +2,12 @@ package domain;
 
 import utils.validator.NameValidator;
 
-public class User {
+public class Player {
 	public final String name;
 	public Money money;
 	public final Cards cards = new Cards();
 
-	public User(String name) {
+	public Player(String name) {
 		new NameValidator(name);
 		this.name = name;
 	}

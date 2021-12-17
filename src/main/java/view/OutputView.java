@@ -1,8 +1,6 @@
 package view;
 
-import java.util.ArrayList;
-
-import domain.User;
+import domain.Player;
 import domain.repository.Repository;
 
 public class OutputView {
@@ -10,22 +8,22 @@ public class OutputView {
 	public static final String PLAYER_INIT_MESSAGE = "딜러와 %s에게 2장을 나누었습니다.\n";
 	public static final String RESULT_STRING = "## 최종 수익";
 	public static final String RESULT = "%s - 결과 : %d\n";
-	public static void printInitMessage() {
-		System.out.printf(PLAYER_INIT_MESSAGE, Repository.users);
-	}
 
+	public static void printInitMessage() {
+		System.out.printf(PLAYER_INIT_MESSAGE, Repository.players);
+	}
 
 	public static void printDealerCards() {
 		System.out.println(Repository.DEALER.getCardStatus());
 	}
 
 	public static void printUsersCards() {
-		Repository.users.get().forEach(user -> System.out.println(user.getCardStatus()));
+		Repository.players.get().forEach(user -> System.out.println(user.getCardStatus()));
 		printBreak();
 	}
 
-	public static void printUserCards(User user) {
-		System.out.println(user.getCardStatus());
+	public static void printUserCards(Player player) {
+		System.out.println(player.getCardStatus());
 		printBreak();
 	}
 
@@ -46,13 +44,14 @@ public class OutputView {
 	public static void printPlayerMoneyResult() {
 		System.out.println(RESULT_STRING);
 		System.out.println(Repository.DEALER);
-		Repository.users.get().forEach(System.out::println);
+		Repository.players.get().forEach(System.out::println);
 		printBreak();
 	}
 
 	public static void printPlayerResult() {
 		System.out.printf(RESULT, Repository.DEALER.getCardStatus(), Repository.DEALER.cards.getCardSum());
-		Repository.users.get().forEach(user -> System.out.printf(RESULT, user.getCardStatus(), user.cards.getCardSum()));
+		Repository.players.get()
+			.forEach(user -> System.out.printf(RESULT, user.getCardStatus(), user.cards.getCardSum()));
 		printBreak();
 	}
 }

@@ -1,19 +1,19 @@
 package domain;
 
-public class Dealer extends User {
+public class Dealer extends Player {
 	public Dealer() {
 		super("딜러");
 		this.money = new Money(0);
 	}
-	public void setWin(User user) {
-		this.money = new Money(this.money.get() + user.money.get());
+	public void setWin(Player player) {
+		this.money = new Money(this.money.get() + player.money.get());
 	}
 
-	public void setLose(User user) {
-		this.money = new Money(this.money.get() - user.money.get());
+	public void setLose(Player player) {
+		this.money = new Money(this.money.get() - player.money.get());
 	}
 
-	public void setBlackjackLose(User user) {
-		this.money = new Money((int)(this.money.get() - user.money.get() * (1.5)));
+	public void setBlackjackLose(Player player) {
+		this.money = new Money((int)(this.money.get() - player.money.get() * (1.5)));
 	}
 }

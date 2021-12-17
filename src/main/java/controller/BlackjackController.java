@@ -2,7 +2,7 @@ package controller;
 
 import controller.view.InputController;
 import domain.Dealer;
-import domain.User;
+import domain.Player;
 import domain.repository.Repository;
 import view.OutputView;
 
@@ -20,17 +20,15 @@ public class BlackjackController {
 	}
 
 	private void initiate() {
-		Repository.users = InputController.getUsers();
+		Repository.players = InputController.getUsers();
 		OutputView.printBreak();
-		Repository.users.get().forEach(user -> user.money = InputController.getUserMoney(user.name));
+		Repository.players.get().forEach(user -> user.money = InputController.getUserMoney(user.name));
 	}
 
 	private void start() {
-		// 작동 시작
 		Repository.DEALER.initCardAppend();
-		Repository.users.get().forEach(User::initCardAppend);
+		Repository.players.get().forEach(Player::initCardAppend);
 		OutputView.printInitMessage();
-
 		goRound();
 		dealerGoRound();
 	}
@@ -45,22 +43,22 @@ public class BlackjackController {
 	private void goRound() {
 		OutputView.printDealerCards();
 		OutputView.printUsersCards();
-		for (User user : Repository.users.get()) {
-			userGoRound(user, 0);
+		for (Player player : Repository.players.get()) {
+			userGoRound(player, 0);
 		}
 	}
 
-	private void userGoRound(User user, int repeatNum) {
-		if (user.cards.getCardSum() < 21) {
-			String answer = InputController.getAnswer(user.name);
+	private void userGoRound(Player player, int repeatNum) {
+		if (player.cards.getCardSum() < 21) {
+			String answer = InputController.getAnswer(player.name);
 			if (answer.equals("y")) {
-				user.cardAppend();
-				OutputView.printUserCards(user);
-				userGoRound(user, repeatNum + 1);
+				player.cardAppend();
+				OutputView.printUserCards(player);
+				userGoRound(player, repeatNum + 1);
 				return;
 			}
 			if (repeatNum == 0) {
-				OutputView.printUserCards(user);
+				OutputView.printUserCards(player);
 			}
 		}
 	}
@@ -69,31 +67,49 @@ public class BlackjackController {
 		Dealer dealer = Repository.DEALER;
 		int dealerSum = dealer.cards.getCardSum();
 		if (dealerSum > 21) {
-			for (User user : Repository.users.get()) {
-				dealer.setLose(user);
-				user.setWin();
-			}
+			dealerAllLose();
 			return;
 		}
-		for (User user : Repository.users.get()) {
-			if (user.cards.getCardSum() == dealerSum) {
-				user.setDraw();
-				continue;
-			}
-			if (user.cards.getCardSum() > 21 || user.cards.getCardSum() < dealerSum) {
-				dealer.setWin(user);
-				user.setLose();
-				continue;
-			}
-			if (user.cards.getCardSum() > dealerSum) {
-				dealer.setLose(user);
-				user.setWin();
-				continue;
-			}
-			if (user.cards.isTwoCard() && user.cards.getCardSum() == 21) {
-				dealer.setBlackjackLose(user);
-				user.setBlackjackWin();
-			}
+		for (Player player : Repository.players.get()) {
+			userDraw(player);
+			userLose(player);
+			userWin(player);
+		}
+	}
+	private void dealerAllLose() {
+		for (Player player : Repository.players.get()) {
+			Repository.DEALER.setLose(player);
+			player.setWin();
+		}
+	}
+
+	private void userWin(Player player) {
+		Dealer dealer = Repository.DEALER;
+		int dealerSum = dealer.cards.getCardSum();
+		if (player.cards.getCardSum() > dealerSum) {
+			dealer.setLose(player);
+			player.setWin();
+		}
+		if (player.cards.isTwoCard() && player.cards.getCardSum() == 21) {
+			dealer.setBlackjackLose(player);
+			player.setBlackjackWin();
+		}
+	}
+
+	private void userLose(Player player) {
+		Dealer dealer = Repository.DEALER;
+		int dealerSum = dealer.cards.getCardSum();
+		if (player.cards.getCardSum() > 21 || player.cards.getCardSum() < dealerSum) {
+			dealer.setWin(player);
+			player.setLose();
+		}
+	}
+
+	private void userDraw(Player player) {
+		Dealer dealer = Repository.DEALER;
+		int dealerSum = dealer.cards.getCardSum();
+		if (player.cards.getCardSum() == dealerSum) {
+			player.setDraw();
 		}
 	}
 }

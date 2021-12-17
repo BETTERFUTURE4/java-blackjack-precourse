@@ -1,16 +1,16 @@
 package controller.view;
 
 import domain.Money;
-import domain.Users;
+import domain.Players;
 import utils.validator.AnswerValidator;
 import view.InputView;
 import view.OutputView;
 
 public class InputController {
 
-	public static Users getUsers() {
+	public static Players getUsers() {
 		try {
-			return new Users(InputView.inputNames());
+			return new Players(InputView.inputNames());
 		} catch (IllegalArgumentException e) {
 			OutputView.printError(e.getMessage());
 			return getUsers();

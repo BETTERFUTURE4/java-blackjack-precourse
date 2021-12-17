@@ -5,7 +5,7 @@ import static org.assertj.core.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
 import domain.Card;
-import domain.User;
+import domain.Player;
 import domain.repository.CardNum;
 import domain.repository.CardPattern;
 
@@ -14,27 +14,27 @@ public class UnitTest {
 
 	@Test
 	void AceTest() {
-		User user = new User("jiwoo");
-		user.cards.cardAppend(new Card(CardNum.NINE, CardPattern.CLOVER));
-		user.cards.cardAppend(new Card(CardNum.ACE, CardPattern.CLOVER));
-		user.cards.cardAppend(new Card(CardNum.ACE, CardPattern.CLOVER));
+		Player player = new Player("jiwoo");
+		player.cards.cardAppend(new Card(CardNum.NINE, CardPattern.CLOVER));
+		player.cards.cardAppend(new Card(CardNum.ACE, CardPattern.CLOVER));
+		player.cards.cardAppend(new Card(CardNum.ACE, CardPattern.CLOVER));
 
-		System.out.println(user.getCardStatus());
-		System.out.println(user.cards.getCardSum());
+		System.out.println(player.getCardStatus());
+		System.out.println(player.cards.getCardSum());
 
-		assertThat(user.cards.getCardSum()).isEqualTo(11);
+		assertThat(player.cards.getCardSum()).isEqualTo(11);
 	}
 
 	@Test
 	void AceTest2() {
-		User user = new User("jiwoo");
-		user.cards.cardAppend(new Card(CardNum.EIGHT, CardPattern.CLOVER));
-		user.cards.cardAppend(new Card(CardNum.ACE, CardPattern.CLOVER));
-		user.cards.cardAppend(new Card(CardNum.ACE, CardPattern.CLOVER));
+		Player player = new Player("jiwoo");
+		player.cards.cardAppend(new Card(CardNum.EIGHT, CardPattern.CLOVER));
+		player.cards.cardAppend(new Card(CardNum.ACE, CardPattern.CLOVER));
+		player.cards.cardAppend(new Card(CardNum.ACE, CardPattern.CLOVER));
 
-		System.out.println(user.getCardStatus());
-		System.out.println(user.cards.getCardSum());
+		System.out.println(player.getCardStatus());
+		System.out.println(player.cards.getCardSum());
 
-		assertThat(user.cards.getCardSum()).isEqualTo(20);
+		assertThat(player.cards.getCardSum()).isEqualTo(20);
 	}
 }

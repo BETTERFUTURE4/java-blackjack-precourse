@@ -1,10 +1,10 @@
 package domain.repository;
 
 import domain.Dealer;
-import domain.Users;
+import domain.Players;
 
 public class Repository {
-	public static Users users;
+	public static Players players;
 	public static final Dealer DEALER = new Dealer();
 
 	// public static Object get() {

@@ -13,11 +13,7 @@ public class Cards {
 	}
 
 	public int getCardSum() {
-		int sum = 0;
-		for (Card card : cards) {
-			sum += card.getNumber();
-		}
-
+		int sum = cards.stream().mapToInt(Card::getNumber).sum();
 		if (isInAce() && isGoodToChangeAce(sum)) {
 			sum += 10;
 		}
@@ -25,12 +21,9 @@ public class Cards {
 	}
 
 	public boolean isInAce() {
-		for (Card card : cards) {
-			if (card.number.equals("A")) {
-				return true;
-			}
-		}
-		return false;
+		return cards.stream()
+			.map(card -> card.number)
+			.anyMatch(cardNum -> cardNum.equals("A"));
 	}
 
 	public boolean isGoodToChangeAce(int sum) {
@@ -43,7 +36,7 @@ public class Cards {
 
 	@Override
 	public String toString() {
-		// 프린트 원하는 방식으로 구현
-		return cards.toString().substring(1,cards.toString().length()-1);
+		return cards.toString()
+			.substring(1, cards.toString().length()-1);
 	}
 }
